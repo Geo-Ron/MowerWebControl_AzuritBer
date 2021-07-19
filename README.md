@@ -30,7 +30,10 @@ esp8266ConfigString = "123test321";
 ```
 
 ## MowerWebControl baud rate
-Verify the baud rate in Mowerwebcontrol.ino to match the setting in mower.cpp
+Verify the baud rate in Mowerwebcontrol.ino to match the setting in mower.h
+
+## ESP8266 SPIFFS
+[Link to instructable article](https://www.instructables.com/Using-ESP8266-SPIFFS/)
 
 ## Domoticz Calls
 ```C++
