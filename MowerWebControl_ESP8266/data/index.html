@@ -1,91 +1,101 @@
 <!DOCTYPE html>
-<html lang="de"><head>
-  
+<html lang="en">
+
+<head>
+
   <meta charset="UTF-8">
   <title>Ardumower Webinterface/Settings&lt;</title>
 
-  
-  
+
+
   <meta name="description" content="Kurzbeschreibung">
 
-  
+
   <link href="./design.css" rel="stylesheet">
 
-  
+
   <script language="javascript" type="text/javascript" src="functions.js"></script>
-</head><body>
-<img src="./logo.png" alt="Ardumower">
-<hr>
-<table border="0">
+</head>
 
-  <col width="500"> <tbody>
-    <tr>
-      <td>
-      <div style="text-align: center;"><font size="5">Ardumower
-Webinterface</font></div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      <div style="text-align: center;"> <button type="button" onclick="window.location.href='./commands.html'" class="button">
-Commands </button> </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      <div style="text-align: center;"> <button type="button" onclick="window.location.href='./manual.html'" class="button"> Manual </button>
-      </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      <div style="text-align: center;"> <button type="button" onclick="window.location.href='./settings/index.html'" class="button">
-Settings </button> </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      <div style="text-align: center;">
-			<button type="button" onclick="window.location.href='./info.html'" class="button">
-				Info
-			</button>
-		</div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-	  <div style="text-align: center;">
-			<button type="button" onclick="window.location.href='./error.html'" class="button">
-				Error Counters
-			</button>
-		</div>
-      </td>
-    </tr>
-	<tr>
-      <td>
-	  <div style="text-align: center;">
-			<button type="button" onclick="window.location.href='./testodo.html'" class="button">
-				Test Odometrie
-			</button>
-		</div>
-      </td>
-    </tr>
-    <tr>
-	
-	<tr>
-      <td>
-	  <div style="text-align: center;">
-			<button type="button" onclick="window.location.href='./testimu.html'" class="button">
-				Test IMU
-			</button>
-		</div>
-      </td>
-    </tr>
-    <tr>
-  </tbody>
-</table>
+<body>
+  <img src="./logo.png" alt="Ardumower">
+  <hr>
+  <table border="0">
 
-<script>
+    <col width="500">
+    <tbody>
+      <tr>
+        <td>
+          <div style="text-align: center;">
+            <font size="5">Ardumower
+              Webinterface</font>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="text-align: center;"> <button type="button" onclick="window.location.href='./commands.html'"
+              class="button">
+              Commands </button> </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="text-align: center;"> <button type="button" onclick="window.location.href='./manual.html'"
+              class="button"> Manual </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="text-align: center;"> <button type="button" onclick="window.location.href='./settings/index.html'"
+              class="button">
+              Settings </button> </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="text-align: center;">
+            <button type="button" onclick="window.location.href='./info.html'" class="button">
+              Info
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="text-align: center;">
+            <button type="button" onclick="window.location.href='./error.html'" class="button">
+              Error Counters
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="text-align: center;">
+            <button type="button" onclick="window.location.href='./testodo.html'" class="button">
+              Test Odometrie
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+
+      <tr>
+        <td>
+          <div style="text-align: center;">
+            <button type="button" onclick="window.location.href='./testimu.html'" class="button">
+              Test IMU
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+    </tbody>
+  </table>
+
+  <script>
 	function isChanging(elem){
 		var ID = elem;
 		var val,ele, ele1;
@@ -95,5 +105,7 @@ Settings </button> </div>
 		val = ele.value;
 		ele1.innerText = val;
 	}
-</script>
-</body></html>
+  </script>
+</body>
+
+</html>
