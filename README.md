@@ -29,6 +29,8 @@ esp8266Use = 1; // use ESP8266 Wifi module? (WARNING: if enabled, you cannot use
 esp8266ConfigString = "123test321";
 ```
 
+## MowerWebControl baud rate
+Verify the baud rate in Mowerwebcontrol.ino to match the setting in mower.cpp
 
 ## Domoticz Calls
 ```C++
