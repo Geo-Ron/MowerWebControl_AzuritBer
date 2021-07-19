@@ -1,7 +1,7 @@
 # MowerWebControl_AzuritBer
  
 [Link to forum](https://forum.ardumower.de/threads/ardumower-webinterface.23825)
-
+[Link to original forum entry](https://forum.ardumower.de/threads/ardumower-webinterface.23360/)
 
 ## Configure Wifi settings:
 
@@ -18,6 +18,16 @@ char *password = "xxx";
 ```
 
 Flash the ESP
+
+## Configure mower to use wifi instead of bluetooth
+```C++
+// ----- bluetooth -------------------------------------
+bluetoothUse = 0; // use Bluetooth module? (WARNING: if enabled, you cannot use ESP8266)
+
+// ----- esp8266 ---------------------------------------
+esp8266Use = 1; // use ESP8266 Wifi module? (WARNING: if enabled, you cannot use Bluetooth)
+esp8266ConfigString = "123test321";
+```
 
 
 ## Domoticz Calls
