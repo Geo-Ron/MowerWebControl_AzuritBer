@@ -14,7 +14,7 @@
   <link href="./design.css" rel="stylesheet">
 
 
-  <script language="javascript" type="text/javascript" src="functions.js"></script>
+  <script language="javascript" type="text/javascript" src="./functions.js"></script>
 </head>
 
 <body>
@@ -96,15 +96,15 @@
   </table>
 
   <script>
-	function isChanging(elem){
-		var ID = elem;
-		var val,ele, ele1;
-		var changed = false;
-		ele = document.getElementById(ID);
-		ele1 = document.getElementById( ID + "_act");
-		val = ele.value;
-		ele1.innerText = val;
-	}
+    function isChanging(elem) {
+      var ID = elem;
+      var val, ele, ele1;
+      var changed = false;
+      ele = document.getElementById(ID);
+      ele1 = document.getElementById(ID + "_act");
+      val = ele.value;
+      ele1.innerText = val;
+    }
   </script>
 </body>
 

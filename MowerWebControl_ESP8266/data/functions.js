@@ -1,7 +1,7 @@
 // Abfrageintervall der Werte in ms
 var abfrageIntervall = 1000;
 // nicht mehrere Anfragen parallel senden
-var ajaxAktiv=false;
+var ajaxAktiv = false;
 // beim Neuladen parameter komplett anfordern
 var neuGeladen = true;
 
@@ -9,76 +9,76 @@ var reqCmd = "";
 
 var aktivity = 0; //Requestzähler für Aktivitätsanzeige
 
-var dragID="";  //ID des Sliders der gerade verändert wird (zum ausblenden der aktualisierung)
+var dragID = "";  //ID des Sliders der gerade verändert wird (zum ausblenden der aktualisierung)
 
 //Verbindungsanzeige
-function dispCon(state){
+function dispCon(state) {
   var ele = document.getElementById("con");
   ele.innerText = state;
 }
 
 //Progress-Anzeige aktualisierung
-function writeProgress(){
+function writeProgress() {
   var ele = document.getElementById("aktivity");
   switch (aktivity) {
     case 0:
-      ele.innerText="/"
+      ele.innerText = "/"
       break;
     case 1:
-      ele.innerText="-"
+      ele.innerText = "-"
       break;
     case 2:
-      ele.innerText="\\"
+      ele.innerText = "\\"
       break;
     case 3:
-      ele.innerText='|'
+      ele.innerText = '|'
       break;
     default:
   }
 
-  if (aktivity>=3)aktivity = 0;
+  if (aktivity >= 3) aktivity = 0;
   else aktivity++;
 }
 
 // Die Keys heißen wie die Felder
 function writeAntwort(str) {
-var ele;
-var lbCount = 1;
-writeProgress();
+  var ele;
+  var lbCount = 1;
+  writeProgress();
 
   //  an & trennen
   var arr = str.split('&');
-  for(var i=0; i<arr.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
     // an = trennen
     var keyVal = arr[i].split('=');
     var keyPart = keyVal[0].split("_");
-    if (keyPart.length == 2){
+    if (keyPart.length == 2) {
       //ist ein zusammengesetztes Element (slider)
       switch (keyPart[1]) {
         case "val":
-          setSliderVal(keyPart[0],keyVal[1])
+          setSliderVal(keyPart[0], keyVal[1])
           break;
         case "min":
-          setSliderMin(keyPart[0],keyVal[1])
+          setSliderMin(keyPart[0], keyVal[1])
           break;
         case "max":
-          setSliderMax(keyPart[0],keyVal[1])
+          setSliderMax(keyPart[0], keyVal[1])
           break;
         case "res":
-          setSliderRes(keyPart[0],keyVal[1])
+          setSliderRes(keyPart[0], keyVal[1])
           break;
         default:
       }
     } else {
       //element ist ein textfeld oder ein button
-      if (keyVal[0] == "con")dispCon(keyVal[1]);
+      if (keyVal[0] == "con") dispCon(keyVal[1]);
       else {
         ele = document.getElementById(keyVal[0]);
-        if (ele == null){
+        if (ele == null) {
           ele = document.getElementById(keyVal[0] + "_" + lbCount);
           lbCount++;
         }
-        if (ele != null){
+        if (ele != null) {
           ele.innerText = keyVal[1];
         }
       }
@@ -87,12 +87,12 @@ writeProgress();
 
 }
 
-function setSliderVal(id,val) {
-  if (dragID != id){
+function setSliderVal(id, val) {
+  if (dragID != id) {
     var objSlider, objMin, objMax, objVal, objAct;
     objSlider = document.getElementById(id);
-    if (Number(val) < Number(objSlider.min))objSlider.value = objSlider.min;
-    else if (Number(val) > Number(objSlider.max))objSlider.value = objSlider.max;
+    if (Number(val) < Number(objSlider.min)) objSlider.value = objSlider.min;
+    else if (Number(val) > Number(objSlider.max)) objSlider.value = objSlider.max;
     else objSlider.value = val;
 
     objVal = document.getElementById(id + "_val");
@@ -102,7 +102,7 @@ function setSliderVal(id,val) {
   }
 }
 
-function setSliderMin(id,min) {
+function setSliderMin(id, min) {
   var objSlider, objMin, objMax, objVal, objAct;
   objSlider = document.getElementById(id);
   objSlider.min = min;
@@ -111,7 +111,7 @@ function setSliderMin(id,min) {
   objMin.innerText = min;
 }
 
-function setSliderMax(id,max) {
+function setSliderMax(id, max) {
   var objSlider, objMin, objMax, objVal, objAct;
   objSlider = document.getElementById(id);
   objSlider.max = max;
@@ -119,13 +119,13 @@ function setSliderMax(id,max) {
   objMax.innerText = max;
 }
 
-function setSliderRes(id,res) {
+function setSliderRes(id, res) {
   var objSlider, objMin, objMax, objVal, objAct;
   objSlider = document.getElementById(id);
   objSlider.step = res;
 }
 
-function setSlider(id,min,max,val) {
+function setSlider(id, min, max, val) {
   var objSlider, objMin, objMax, objVal, objAct;
   objSlider = document.getElementById(id);
   objSlider.value = val;
@@ -147,18 +147,18 @@ function getWerte(requ) {
   reqCmd = requ;
 
   // Warten, bis frei
-  while(ajaxAktiv);
+  while (ajaxAktiv);
   ajaxAktive = true;
   // AJAX
   xhr = new XMLHttpRequest();
   //xhr.open('GET', '/ardu/ajax.php');
-  if (neuGeladen){
+  if (neuGeladen) {
     xhr.open('POST', '/werte?cmd=' + requ + '&refresh=false');
   } else {
-    xhr.open('POST', '/werte?cmd=' + requ + '&refresh=true');
+    xhr.open('POST', './werte?cmd=' + requ + '&refresh=true');
   }
 
-  xhr.onload = function() {
+  xhr.onload = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         // console.log('Antwort OK ' + xhr.responseText);
@@ -167,14 +167,14 @@ function getWerte(requ) {
       else if (xhr.status !== 200) {
         console.log('Request failed.  Returned status of ' + xhr.status);
       }
-      ajaxAktiv=false;
+      ajaxAktiv = false;
     }
   };
   xhr.send(null);
 
   if (neuGeladen) {
     neuGeladen = false;
-    setInterval(function(){ getWerte(reqCmd) },abfrageIntervall); // aller x Sekunden Werte holen
+    setInterval(function () { getWerte(reqCmd) }, abfrageIntervall); // aller x Sekunden Werte holen
   }
 
 }
@@ -182,7 +182,7 @@ function getWerte(requ) {
 // Sendeparameter zusammenfassen und AJAX-Aufruf durchführen
 function buildParams(paramStr) {
   // warten bis AJAX-Request fertig
-  while(ajaxAktiv);
+  while (ajaxAktiv);
   ajaxAktive = true;
 
   //console.log('ParamStr: '+ paramStr);
@@ -191,7 +191,7 @@ function buildParams(paramStr) {
 
   xhr.open('POST', '/set?' + paramStr);
 
-  xhr.onload = function() {
+  xhr.onload = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         // console.log('Antwort OK ' + xhr.responseText);
@@ -200,7 +200,7 @@ function buildParams(paramStr) {
       else if (xhr.status !== 200) {
         console.log('Request failed.  Returned status of ' + xhr.status);
       }
-      ajaxAktiv=false;
+      ajaxAktiv = false;
       sliderSend = false;
     }
   }
@@ -208,43 +208,43 @@ function buildParams(paramStr) {
 
   if (neuGeladen) {
     neuGeladen = false;
-    setInterval(function(){ getWerte(reqCmd) },abfrageIntervall); // aller x Sekunden Werte holen
+    setInterval(function () { getWerte(reqCmd) }, abfrageIntervall); // aller x Sekunden Werte holen
   }
 
 }
 
 //Button wurde angeklicked
 function isClicked(id) {
-    buildParams(id + "=true");
+  buildParams(id + "=true");
 }
 
 //Slider wurde verändert und losgelassen
 function isChange(id) {
   dragID = "";
-  var val,objSlider, objVal,step;
+  var val, objSlider, objVal, step;
   var changed = false;
   objSlider = document.getElementById(id);
-  objVal = document.getElementById( id + "_val");
+  objVal = document.getElementById(id + "_val");
   val = objSlider.value;
   step = objSlider.step;
-  if (step == "")step = 1;
+  if (step == "") step = 1;
 
   // Hat sich was geändert
   if (val != objVal.innerText) {
-    buildParams(id + "=" + Math.round(val/step));
+    buildParams(id + "=" + Math.round(val / step));
     objVal.innerText = val;
   }
 }
 
 //Slider wird verändert
-function isChanging(elem){
+function isChanging(elem) {
   dragID = elem;
 
   var ID = elem;
-  var val,ele, ele1;
+  var val, ele, ele1;
   var changed = false;
   ele = document.getElementById(ID);
-  ele1 = document.getElementById( ID + "_act");
+  ele1 = document.getElementById(ID + "_act");
   val = ele.value;
   ele1.innerText = val;
 }
