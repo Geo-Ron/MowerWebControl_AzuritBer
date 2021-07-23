@@ -3,6 +3,11 @@
 [Link to forum](https://forum.ardumower.de/threads/ardumower-webinterface.23825)
 [Link to original forum entry](https://forum.ardumower.de/threads/ardumower-webinterface.23360/)
 
+## Additional componentents
+[Set up Arduino IDE to program ESP8266](https://www.instructables.com/id/Setting-Up-the-Arduino-IDE-to-Program-the-ESP8266-/)
+[Arduino ESP8266 FS Plugin](https://github.com/esp8266/arduino-esp8266fs-plugin/releases)
+[Using ESP8266 SPIFFS](https://www.instructables.com/Using-ESP8266-SPIFFS)
+
 ## Configure Wifi settings:
 
 Edit MowerWebControl_ESP8266\MowerWebControl_ESP8266.ino
